@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.btn-info {
+  background-color: #33b5e5 !important;
+  color: #fff;
+}
+.react-calendar {
+  margin: auto;
+}
+.thead-dark,
+tbody {
+  line-height: 2.5;
+}
+
+.main-content {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+}
