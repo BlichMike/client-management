@@ -3,10 +3,13 @@ import CalendarItem from "./CalendarItem";
 import { toast } from "react-toastify";
 import MultiSelect from "@kenshooui/react-multi-select";
 import { inject, observer } from "mobx-react";
+import { observable } from "mobx";
 
 @inject("ClientStore", "CourseStore")
 @observer
 class CoursePage extends Component {
+  @observable course = null;
+
   constructor(props) {
     super(props);
     this.initData();
@@ -78,10 +81,8 @@ class CoursePage extends Component {
       client => client.id
     );
 
-    this.CourseStore.editCourse(course);
-
     if (this.isNew) {
-      this.CourseStore.addCourse(course);
+      this.CourseStore.createCourse(course);
       message += `${course.name} created [${course.id}]`;
     } else {
       this.CourseStore.editCourse(course);
@@ -103,16 +104,16 @@ class CoursePage extends Component {
               <div className="input-group mb-4">
                 <div className="input-group-prepend">
                   <span className="input-group-text" id="basic-addon1">
-                    Course Type
+                    Course Name
                   </span>
                 </div>
                 <input
                   type="text"
                   className="form-control "
-                  id="courseTypeInput"
-                  placeholder="Enter the Course Type"
-                  value={this.course.type}
-                  onChange={event => this.handleChange("type", event)}
+                  id="courseNameInput"
+                  placeholder="Enter the Course Name"
+                  value={this.course.name}
+                  onChange={event => this.handleChange("name", event)}
                 />
               </div>
               <MultiSelect

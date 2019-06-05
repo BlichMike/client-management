@@ -6,7 +6,7 @@ import { clientsAndCoursesRegisterStore } from "./ClientsAndCoursesRegisterStore
 
 class CourseStore {
   @observable courses = [];
-  @observable localCourse = null;
+  localCourse = null;
 
   getDate(date) {
     return Helpers.genericHelper.getDate(date);
@@ -33,13 +33,13 @@ class CourseStore {
     return result;
   }
 
-  getLocalCourse() {
-    this.initLocalCourse();
-    return this.localCourse;
+  @action getLocalCourse() {
+    return Object.assign({}, new Course({ local: true }));
   }
 
-  @action initLocalCourse() {
-    this.localCourse = new Course({ local: true });
+  @action createCourse(course) {
+    const newCourse = new Course({ ...course });
+    this.addCourse(newCourse);
   }
 
   @action addCourse(course) {

@@ -5,6 +5,7 @@ class Course {
     startDate = new Date(),
     registered = [],
     type = COURSE_ENUM.ON_GOING.type,
+    name,
     syllabus = [],
     level = 1,
     local = false
@@ -15,7 +16,7 @@ class Course {
     this.startDate = startDate;
     this.registered = registered;
     this.type = type;
-    this.name = COURSE_ENUM[type].name;
+    this.name = name || COURSE_ENUM[type].name;
     this.price = COURSE_ENUM[type].price;
     this.duration = COURSE_ENUM[type].duration;
     this.syllabus = syllabus;

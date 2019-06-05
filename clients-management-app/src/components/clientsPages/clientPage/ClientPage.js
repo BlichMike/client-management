@@ -3,10 +3,13 @@ import { toast } from "react-toastify";
 import MultiSelect from "@kenshooui/react-multi-select";
 import TextInput from "./TextInput";
 import { inject, observer } from "mobx-react";
+import { observable } from "mobx";
 
 @inject("ClientStore", "CourseStore")
 @observer
 class ClientPage extends Component {
+  @observable client = null;
+
   constructor(props) {
     super(props);
     this.initData();

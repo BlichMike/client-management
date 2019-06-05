@@ -5,7 +5,7 @@ import { clientsAndCoursesRegisterStore } from "./ClientsAndCoursesRegisterStore
 
 class ClientStore {
   @observable clients = [];
-  @observable localClient = null;
+  localClient = null;
   _helper = Helpers.genericHelper;
 
   getAllClients() {
@@ -29,17 +29,13 @@ class ClientStore {
     return result;
   }
 
-  getLocalClient() {
-    this.initLocalClient();
-    return this.localClient;
+  @action getLocalClient() {
+    return Object.assign({}, new Client({ local: true }));
   }
 
-  @action initLocalClient() {
-    this.localClient = new Client({ local: true });
-  }
-
-  @action addClient(client) {
-    this.clients.push(client);
+  @action createClient(client) {
+    const newClient = new Client({ ...client });
+    this.clients.push(newClient);
   }
 
   @action removeClient(id) {
